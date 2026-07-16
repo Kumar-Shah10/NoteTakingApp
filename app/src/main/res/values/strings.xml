@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">Note Taking</string>
+    <string name="title_activity_splash">SplashActivity</string>
+    <string name="title_activity_login">LoginActivity</string>
+    <string name="title_activity_register">RegisterActivity</string>
+    <string name="title_activity_forget_password">ForgetPasswordActivity</string>
+    <string name="title_activity_dashboard">DashboardActivity</string>
+    <string name="title_activity_home">HomeActivity</string>
+    <string name="title_activity_all_notes">AllNotesActivity</string>
+    <string name="title_activity_pinned">PinnedActivity</string>
+    <string name="title_activity_favorites">FavoritesActivity</string>
+    <string name="title_activity_archived">ArchivedActivity</string>
+    <string name="title_activity_bottom_nav">BottomNavActivity</string>
+    <string name="title_activity_note_components">NoteComponentsActivity</string>
+    <string name="title_activity_deleted_notes">DeletedNotesActivity</string>
+    <string name="title_activity_profile">ProfileActivity</string>
+</resources>
