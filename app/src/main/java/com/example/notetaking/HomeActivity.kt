@@ -2,7 +2,6 @@ package com.example.notetaking
 
 import android.content.Intent
 import android.os.Bundle
-import androidx.compose.ui.platform.testTag
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
@@ -56,7 +55,7 @@ fun HomeScreen() {
 
     val recentNotes = vm.notes
         .filter { !it.isArchived && !it.isDeleted }
-        .sortedByDescending { it.updatedAt }
+        .sortedWith(compareByDescending<NoteModel> { it.isPinned }.thenByDescending { it.updatedAt })
         .take(4)
 
     Scaffold(
@@ -86,9 +85,7 @@ fun HomeScreen() {
                         Icon(Icons.Outlined.Delete, contentDescription = "Trash", tint = TextMuted)
                     }
                     // Profile avatar button
-                    IconButton(
-                        modifier = Modifier.testTag("profile_avatar"),
-                        onClick = {
+                    IconButton(onClick = {
                         context.startActivity(Intent(context, ProfileActivity::class.java))
                     }) {
                         Box(
@@ -98,7 +95,8 @@ fun HomeScreen() {
                                 .background(Gold.copy(alpha = 0.15f)),
                             contentAlignment = Alignment.Center,
                         ) {
-
+                            // Prefer the display name (username) over email for the avatar
+                            // initial, matching the logic used in ProfileActivity.
                             val avatarLetter = (user?.displayName?.ifBlank { null }
                                 ?: user?.email?.substringBefore("@"))
                                 ?.firstOrNull()?.uppercaseChar() ?: '?'
@@ -115,7 +113,6 @@ fun HomeScreen() {
         bottomBar = { BottomNav(context, 0) },
         floatingActionButton = {
             FloatingActionButton(
-                modifier       = Modifier.testTag("add_note_fab"),
                 onClick        = { showCreate = true },
                 containerColor = Gold,
                 contentColor   = Color.White,
