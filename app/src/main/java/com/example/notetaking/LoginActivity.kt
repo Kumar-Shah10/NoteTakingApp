@@ -136,7 +136,7 @@ fun LoginBody() {
                 textAlign = TextAlign.Center,
             )
 
-            Spacer(modifier = Modifier.height(90.dp))
+            Spacer(modifier = Modifier.height(95.dp))
 
             // ── Form card ──
             Card(
